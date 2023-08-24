@@ -9,10 +9,11 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const orderRoute = require("./routes/order");
 const cartRoute = require("./routes/cart");
-
+const Stripe = require("stripe");
+const stripeRouter = require("./routes/stripe");
 const port = 3000;
 dotenv.config();
-
+const stripe = Stripe(process.env.STRIPE_SECRET);
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("db connected"))
